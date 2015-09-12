@@ -19,9 +19,12 @@ public class Cliente extends Pessoa{
     
     private Long id;
 
-    public Cliente(long id) {
-        this.id = id;
-        
+    public Cliente(String nome, String cpf, String datNas, String telefone, String email, String obs, String pais, String estado, String cidade, String bairro, String rua, String numero, String complemento, String cep) {
+        super(nome, cpf, datNas, telefone, email, obs, pais, estado, cidade, bairro, rua, numero, complemento, cep);
+    }
+
+    public Cliente() {
+        super();
     }
 
     public Long getId() {

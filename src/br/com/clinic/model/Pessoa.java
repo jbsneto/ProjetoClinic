@@ -5,6 +5,7 @@
  */
 package br.com.clinic.model;
 
+import br.com.clinic.util.Util;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,8 +19,8 @@ public class Pessoa {
     
     private String nome;
     private String cpf;
-    private String datNas;
-    private Date dataCadastro;
+    private String dataNas;
+    private String dataCadastro;
     private String telefone;
     private String email;
     private String obs; 
@@ -31,8 +32,45 @@ public class Pessoa {
     private String numero;
     private String complemento;
     private String cep;
-    
 
+    public Pessoa(){
+        
+    }
+    
+    public Pessoa(String nome, String cpf, String dataNas, String telefone, String email, String obs, String pais, String estado, String cidade, String bairro, String rua, String numero, String complemento, String cep) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.dataNas = dataNas;
+        this.dataCadastro = Util.getDataAtual();
+        this.telefone = telefone;
+        this.email = email;
+        this.obs = obs;
+        this.pais = pais;
+        this.estado = estado;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.rua = rua;
+        this.numero = numero;
+        this.complemento = complemento;
+        this.cep = cep;
+    }
+
+    public String getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(String dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
+    public String getObs() {
+        return obs;
+    }
+
+    public void setObs(String obs) {
+        this.obs = obs;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -49,12 +87,12 @@ public class Pessoa {
         this.cpf = cpf;
     }
 
-    public String getDatNas() {
-        return datNas;
+    public String getDataNas() {
+        return dataNas;
     }
 
-    public void setDatNas(String datNas) {
-        this.datNas = datNas;
+    public void setDataNas(String datNas) {
+        this.dataNas = datNas;
     }
 
     public String getTelefone() {

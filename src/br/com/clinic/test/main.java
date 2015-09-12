@@ -5,6 +5,8 @@
  */
 package br.com.clinic.test;
 
+import br.com.clinic.dao.ClienteDao;
+import br.com.clinic.model.Cliente;
 import br.com.clinic.viewer.JfCadConf;
 import java.text.DateFormat;
 import java.util.Date;
@@ -18,10 +20,14 @@ public class main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         
-        JfCadConf jc = new JfCadConf();
-        jc.setVisible(true);
+       ClienteDao dao = new ClienteDao();
+       Cliente c = new Cliente("nome","cpf","dataNas","telefone","email","obs","pais","estado","cidade","bairro","rua","numero","complemento","cep");
+       
+       dao.cadastrarCliente(c);
+       
+        System.out.println(dao.buscarCliente(2));
                 
     }
     
