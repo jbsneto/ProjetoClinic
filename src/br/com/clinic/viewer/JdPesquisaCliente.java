@@ -43,7 +43,7 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
         jTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jcbFiltro = new javax.swing.JComboBox();
-        jtCampoTexto = new javax.swing.JTextField();
+        jtPesquisa = new javax.swing.JTextField();
         jbPesquisar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -123,7 +123,7 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
                                 .addComponent(jLabel2)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jtCampoTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jbPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap())
@@ -138,7 +138,7 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtCampoTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbPesquisar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,6 +180,14 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_jTableMouseClicked
 
     private void jcbFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbFiltroActionPerformed
+        if(this.jcbFiltro.getSelectedIndex() == 0){
+            jtPesquisa.setText(null);
+            jtPesquisa.setEditable(true);
+        }
+        if(this.jcbFiltro.getSelectedIndex() == 1){
+            jtPesquisa.setText(null);
+            jtPesquisa.setEditable(false);
+        }
         this.jcbFiltro.getComponentCount();
     }//GEN-LAST:event_jcbFiltroActionPerformed
 
@@ -245,26 +253,28 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
     private javax.swing.JTable jTable;
     private javax.swing.JButton jbPesquisar;
     private javax.swing.JComboBox jcbFiltro;
-    private javax.swing.JTextField jtCampoTexto;
+    private javax.swing.JTextField jtPesquisa;
     // End of variables declaration//GEN-END:variables
 
 
     private void preencherListaId() throws Exception{
         DefaultTableModel dm = (DefaultTableModel) jTable.getModel();
         dm.getDataVector().removeAllElements();
-        int	id = Integer.parseInt(this.jtCampoTexto.getText());
-        Cliente c = facade.ClienteBuscar(id);    
-        //System.out.println(c.getListaExame());
-        if(c!=null){
-            for (Cliente cli : facade.ClienteListar()){	
-                if(cli.getId() == id){
-                    String cod = Long.toString(c.getId());
-                    dm.addRow(new String[] {cod, c.getNome(),cli.getCpf()});
+        if(!"".equals(this.jtPesquisa.getText())){
+            long id = Integer.parseInt(this.jtPesquisa.getText());
+            Cliente c = facade.ClienteBuscar(id);    
+            //System.out.println(c.getListaExame());
+            if(c!=null){
+                for (Cliente cli : facade.ClienteListar()){	
+                    if(cli.getId() == id){
+                        String cod = Long.toString(c.getId());
+                        dm.addRow(new String[] {cod, c.getNome(),cli.getCpf()});
+                    }
                 }
-            }
-        }else
-                JOptionPane.showMessageDialog(null, "Lista Null");
-    }      
+            }else
+                    JOptionPane.showMessageDialog(null, "Lista Null");
+        }      
+    }
     
     private void preencherListaNome() throws Exception{
         DefaultTableModel dm = (DefaultTableModel) jTable.getModel();
@@ -277,6 +287,11 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
         }else
             JOptionPane.showMessageDialog(null, "Lista Null");
     } 
+    
+    public void limparTabela(){
+        DefaultTableModel dm = (DefaultTableModel) jTable.getModel();
+        dm.getDataVector().removeAllElements();
+    }
     
     public long getCliente(){
         return this.idCliente;

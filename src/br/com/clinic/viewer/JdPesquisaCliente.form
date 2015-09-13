@@ -61,7 +61,7 @@
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="jtCampoTexto" min="-2" pref="240" max="-2" attributes="0"/>
+                                  <Component id="jtPesquisa" min="-2" pref="240" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jbPesquisar" max="32767" attributes="0"/>
                               </Group>
@@ -83,7 +83,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jcbFiltro" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtCampoTexto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtPesquisa" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jbPesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="8" max="32767" attributes="0"/>
@@ -162,7 +162,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbFiltroActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtCampoTexto">
+        <Component class="javax.swing.JTextField" name="jtPesquisa">
         </Component>
         <Component class="javax.swing.JButton" name="jbPesquisar">
           <Properties>

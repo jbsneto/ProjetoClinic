@@ -23,12 +23,12 @@ public class Pessoa {
     private String dataCadastro;
     private String telefone;
     private String email;
-    private String obs; 
     private String cidade;
     private String bairro;
     private String rua;
     private String numero;
     private String cep;
+    private String obs;
 
     public Pessoa(){
         this.dataCadastro = Util.getDataAtual();
