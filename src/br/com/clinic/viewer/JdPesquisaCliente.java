@@ -5,18 +5,28 @@
  */
 package br.com.clinic.viewer;
 
+import br.com.clinic.facade.Facade;
+import br.com.clinic.model.Cliente;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author GENPAC
  */
 public class JdPesquisaCliente extends javax.swing.JDialog {
 
-    /**
-     * Creates new form jdPesquisaCliente
-     */
+    
+    private Facade facade;
+    private long idCliente;
+    
     public JdPesquisaCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        facade = new Facade();
     }
 
     /**
@@ -30,7 +40,7 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jcbFiltro = new javax.swing.JComboBox();
         jtCampoTexto = new javax.swing.JTextField();
@@ -41,19 +51,19 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id", "Nome", "CPF/CNPJ", "Observações"
+                "Id", "Nome", "CPF/CNPJ"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Long.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -64,19 +74,34 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        jTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable);
+        if (jTable.getColumnModel().getColumnCount() > 0) {
+            jTable.getColumnModel().getColumn(0).setResizable(false);
+            jTable.getColumnModel().getColumn(1).setResizable(false);
+            jTable.getColumnModel().getColumn(2).setResizable(false);
         }
 
         jLabel1.setText("Filtro:");
 
-        jcbFiltro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbFiltro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID", "Todos" }));
+        jcbFiltro.setToolTipText("ID");
+        jcbFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbFiltroActionPerformed(evt);
+            }
+        });
 
         jbPesquisar.setText("Pesquisar");
+        jbPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbPesquisarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Pesquisa:");
 
@@ -120,6 +145,9 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        jcbFiltro.getAccessibleContext().setAccessibleName("");
+        jcbFiltro.getAccessibleContext().setAccessibleDescription("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -133,6 +161,38 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMouseClicked
+        try{
+            
+            int result = JOptionPane.showConfirmDialog(null,"Deseja pegar esse cliente?", "Confirmar", JOptionPane.YES_NO_OPTION);
+            if(result == JOptionPane.YES_OPTION){
+                int index = this.jTable.getSelectedRow();
+                String idString = this.jTable.getValueAt(index, 0).toString();
+                idCliente = Long.parseLong(idString);
+                JOptionPane.showMessageDialog(null, facade.ClienteBuscar(idCliente).getNome());
+                dispose();
+            }   
+                //dispose();
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Deu Páia!");
+        }
+    }//GEN-LAST:event_jTableMouseClicked
+
+    private void jcbFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbFiltroActionPerformed
+        this.jcbFiltro.getComponentCount();
+    }//GEN-LAST:event_jcbFiltroActionPerformed
+
+    private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
+        try {
+            if(this.jcbFiltro.getSelectedIndex() == 0)
+                preencherListaId();
+            if(this.jcbFiltro.getSelectedIndex() == 1)
+                preencherListaNome();
+        } catch (Exception ex) {
+            Logger.getLogger(JdPesquisaCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jbPesquisarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,9 +242,43 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable;
     private javax.swing.JButton jbPesquisar;
     private javax.swing.JComboBox jcbFiltro;
     private javax.swing.JTextField jtCampoTexto;
     // End of variables declaration//GEN-END:variables
+
+
+    private void preencherListaId() throws Exception{
+        DefaultTableModel dm = (DefaultTableModel) jTable.getModel();
+        dm.getDataVector().removeAllElements();
+        int	id = Integer.parseInt(this.jtCampoTexto.getText());
+        Cliente c = facade.ClienteBuscar(id);    
+        //System.out.println(c.getListaExame());
+        if(c!=null){
+            for (Cliente cli : facade.ClienteListar()){	
+                if(cli.getId() == id){
+                    String cod = Long.toString(c.getId());
+                    dm.addRow(new String[] {cod, c.getNome(),cli.getCpf()});
+                }
+            }
+        }else
+                JOptionPane.showMessageDialog(null, "Lista Null");
+    }      
+    
+    private void preencherListaNome() throws Exception{
+        DefaultTableModel dm = (DefaultTableModel) jTable.getModel();
+        dm.getDataVector().removeAllElements();
+        if(facade.ClienteListar()!= null){
+            for (Cliente c : facade.ClienteListar()){	
+                String cod = Long.toString(c.getId());
+                dm.addRow(new String[] {cod, c.getNome(),c.getCpf()});
+            }
+        }else
+            JOptionPane.showMessageDialog(null, "Lista Null");
+    } 
+    
+    public long getCliente(){
+        return this.idCliente;
+    } 
 }

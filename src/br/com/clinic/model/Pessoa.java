@@ -24,20 +24,17 @@ public class Pessoa {
     private String telefone;
     private String email;
     private String obs; 
-    private String pais;
-    private String estado;
     private String cidade;
     private String bairro;
     private String rua;
     private String numero;
-    private String complemento;
     private String cep;
 
     public Pessoa(){
-        
+        this.dataCadastro = Util.getDataAtual();
     }
     
-    public Pessoa(String nome, String cpf, String dataNas, String telefone, String email, String obs, String pais, String estado, String cidade, String bairro, String rua, String numero, String complemento, String cep) {
+    public Pessoa(String nome, String cpf, String dataNas, String telefone, String email, String obs, String cidade, String bairro, String rua, String numero, String cep) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataNas = dataNas;
@@ -45,13 +42,10 @@ public class Pessoa {
         this.telefone = telefone;
         this.email = email;
         this.obs = obs;
-        this.pais = pais;
-        this.estado = estado;
         this.cidade = cidade;
         this.bairro = bairro;
         this.rua = rua;
         this.numero = numero;
-        this.complemento = complemento;
         this.cep = cep;
     }
 
@@ -111,21 +105,6 @@ public class Pessoa {
         this.email = email;
     }
 
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
 
     public String getCidade() {
         return cidade;
@@ -157,14 +136,6 @@ public class Pessoa {
 
     public void setNumero(String numero) {
         this.numero = numero;
-    }
-
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
     }
 
     public String getCep() {

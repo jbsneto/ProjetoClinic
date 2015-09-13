@@ -29,7 +29,7 @@ public class ClienteDao{
         con = ConnectionFactory.getConnection(); 
 
         // define comando sql
-        String sql = "insert into cliente (nome,cpf,datanas,datacadastro,telefone,email,obs,pais,estado,cidade,bairro,rua,numero,complemento,cep) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+        String sql = "insert into cliente (nome,cpf,datanas,datacadastro,telefone,email,obs,cidade,bairro,rua,numero,cep) values (?,?,?,?,?,?,?,?,?,?,?,?);";
 
         // "prepara" comando a ser executado (o segundo parametro indica que ao inserir, será possível obter o id gerado no banco)
         PreparedStatement st = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -43,14 +43,11 @@ public class ClienteDao{
         st.setString(5, c.getTelefone());
         st.setString(6, c.getEmail());
         st.setString(7, c.getObs());
-        st.setString(8, c.getPais());
-        st.setString(9, c.getEstado());
-        st.setString(10, c.getCidade());
-        st.setString(11, c.getBairro());
-        st.setString(12, c.getRua());
-        st.setString(13, c.getNumero());
-        st.setString(14, c.getComplemento());
-        st.setString(15, c.getCep());
+        st.setString(8, c.getCidade());
+        st.setString(9, c.getBairro());
+        st.setString(10, c.getRua());
+        st.setString(11, c.getNumero());
+        st.setString(12, c.getCep());
 
         // execute o comando
         st.executeUpdate();
@@ -89,13 +86,10 @@ public class ClienteDao{
                     rs.getString("telefone"),
                     rs.getString("email"), 
                     rs.getString("obs"),
-                    rs.getString("pais"), 
-                    rs.getString("estado"), 
                     rs.getString("cidade"), 
                     rs.getString("bairro"), 
                     rs.getString("rua"), 
                     rs.getString("numero"), 
-                    rs.getString("complemento"), 
                     rs.getString("cep")
                 );
                 c.setId(rs.getLong("id"));
@@ -115,19 +109,17 @@ public class ClienteDao{
         con = ConnectionFactory.getConnection();
 
         // define comando sql
-        String sql = "update cliente set nome=?,"
+        String sql = "update cliente set "
+                + "nome=?,"
                 + "cpf=?,"
                 + "datanas=?,"
                 + "telefone=?,"
                 + "email=?,"
                 + "obs=?,"
-                + "pais=?,"
-                + "estado=?,"
                 + "cidade=?,"
                 + "bairro=?,"
                 + "rua=?,"
                 + "numero=?,"
-                + "complemento=?,"
                 + "cep=? "
                 + "where id=?;";
 
@@ -142,15 +134,12 @@ public class ClienteDao{
         st.setString(4, c.getTelefone());
         st.setString(5, c.getEmail());
         st.setString(6, c.getObs());
-        st.setString(7, c.getPais());
-        st.setString(8, c.getEstado());
-        st.setString(9, c.getCidade());
-        st.setString(10, c.getBairro());
-        st.setString(11, c.getRua());
-        st.setString(12, c.getNumero());
-        st.setString(13, c.getComplemento());
-        st.setString(14, c.getCep());
-        st.setLong(15, c.getId());
+        st.setString(7, c.getCidade());
+        st.setString(8, c.getBairro());
+        st.setString(9, c.getRua());
+        st.setString(10, c.getNumero());
+        st.setString(11, c.getCep());
+        st.setLong(12, c.getId());
 
         // execute o comando
         st.executeUpdate();
@@ -200,13 +189,10 @@ public class ClienteDao{
                     rs.getString("telefone"),
                     rs.getString("email"), 
                     rs.getString("obs"),
-                    rs.getString("pais"), 
-                    rs.getString("estado"), 
                     rs.getString("cidade"), 
                     rs.getString("bairro"), 
                     rs.getString("rua"), 
                     rs.getString("numero"), 
-                    rs.getString("complemento"), 
                     rs.getString("cep")
                 );
                 c.setDataCadastro(rs.getString("dataCadastro"));

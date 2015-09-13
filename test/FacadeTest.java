@@ -30,7 +30,7 @@ public class FacadeTest {
         instance = new Facade();
         
         //ID PARA TESTAR 
-        idTest = 5;
+        idTest = 3;
     }
     
     @AfterClass
@@ -51,7 +51,7 @@ public class FacadeTest {
     @Test
     public void testClienteCadastrar() throws Exception {
         System.out.println("ClienteCadastrar");
-        Cliente c = new Cliente("nome","cpf","dataNas","telefone","email","obs","pais","estado","cidade","bairro","rua","numero","complemento","cep");
+        Cliente c = new Cliente("nome","cpf","dataNas","telefone","email","obs","cidade","bairro","rua","numero","cep");
         
         instance.ClienteCadastrar(c);
         assertNotNull(instance.ClienteListar());

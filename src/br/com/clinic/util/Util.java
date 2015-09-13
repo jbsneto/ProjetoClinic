@@ -17,6 +17,6 @@ public class Util {
                 Date now = new Date();
                 return DateFormat.getInstance().format(now);
 	
-	}
+    }
     
 }

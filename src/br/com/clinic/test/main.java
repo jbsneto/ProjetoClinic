@@ -23,7 +23,7 @@ public class main {
     public static void main(String[] args) throws Exception {
         
        ClienteDao dao = new ClienteDao();
-       Cliente c = new Cliente("nome","cpf","dataNas","telefone","email","obs","pais","estado","cidade","bairro","rua","numero","complemento","cep");
+       Cliente c = new Cliente("nome","cpf","dataNas","telefone","email","obs","cidade","bairro","rua","numero","cep");
        
        dao.cadastrarCliente(c);
        
