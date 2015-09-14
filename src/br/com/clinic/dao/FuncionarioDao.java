@@ -6,13 +6,31 @@
 package br.com.clinic.dao;
 
 import br.com.clinic.model.Funcionario;
+import br.com.clinic.model.Pessoa;
+import br.com.clinic.util.GenericDAO;
+import br.com.clinic.util.HibernateUtil;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 
 /**
  *
  * @author GENPAC
  */
-public class FuncionarioDao{
+public class FuncionarioDao extends GenericDAO<Funcionario>{
 
+     public FuncionarioDao(Class<Funcionario> classModel) {
+        super(classModel);
+    }
+   
+    public Funcionario getIdFuncionario(Long id) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Criteria criteria = session.createCriteria(Pessoa.class);
+		criteria.add(Restrictions.eq("id", id));
+		Funcionario p = (Funcionario) criteria.uniqueResult();
+		session.close();
+		return p;
+    }
     
 }

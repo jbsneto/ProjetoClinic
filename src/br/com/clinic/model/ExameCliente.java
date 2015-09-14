@@ -5,35 +5,46 @@
  */
 package br.com.clinic.model;
 
+import br.com.clinic.interfac.Base;
 import br.com.clinic.util.Util;
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
  *
  * @author GENPAC
  */
-
-public class ExameCliente {
+@Entity
+public class ExameCliente implements Base, Serializable {
     
     //Exame da requisição do cliente
-    
-    private long id;
-    private String dataExame;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Temporal(TemporalType.DATE)
+    private Date dataExame;
+    @ManyToOne
     private Exame exame;
     private boolean urgencia;
-    private String obs;
-    private Requisicao lancamento; //Terá acesso ao cliente, medSolicitante
+    //@ManyToOne(cascade=CascadeType.ALL)
+    //private Lancamento lancamento; //Terá acesso ao cliente, medSolicitante
 
-    public ExameCliente(long id, Exame exame, boolean urgencia, String obs, Requisicao lancamento) {
-        this.id = id;
-        this.dataExame = Util.getDataAtual();
-        this.exame = exame;
-        this.urgencia = urgencia;
-        this.obs = obs;
-        this.lancamento = lancamento;
+    public ExameCliente() {
+        dataExame = Util.getDataAtual();
     }
-    
-    public long getId() {
+
+    @Override
+    public Long getId() {
         return id;
     }
 
@@ -41,12 +52,8 @@ public class ExameCliente {
         this.id = id;
     }
 
-    public String getDataExame() {
+    public Date getDataExame() {
         return dataExame;
-    }
-
-    public void setDataExame(String dataExame) {
-        this.dataExame = dataExame;
     }
 
     public Exame getExame() {
@@ -64,23 +71,5 @@ public class ExameCliente {
     public void setUrgencia(boolean urgencia) {
         this.urgencia = urgencia;
     }
-
-    public String getObs() {
-        return obs;
-    }
-
-    public void setObs(String obs) {
-        this.obs = obs;
-    }
-
-    public Requisicao getLancamento() {
-        return lancamento;
-    }
-
-    public void setLancamento(Requisicao lancamento) {
-        this.lancamento = lancamento;
-    }
-    
-    
     
 }

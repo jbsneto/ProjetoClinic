@@ -6,12 +6,16 @@
 package br.com.clinic.dao;
 
 import br.com.clinic.model.Setor;
+import br.com.clinic.util.GenericDAO;
 
 /**
  *
  * @author GENPAC
  */
-public class SetorDao{
-    
+public class SetorDao extends GenericDAO<Setor>{
 
+    public SetorDao(Class<Setor> classModel){
+        super(classModel);
+    }
+   
 }

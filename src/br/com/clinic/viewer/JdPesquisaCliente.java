@@ -20,13 +20,15 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
 
     
     private Facade facade;
-    private long idCliente;
+    private Cliente cliente;
     
     public JdPesquisaCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
         
         facade = new Facade();
+        jtPesquisa.setEditable(false);
     }
 
     /**
@@ -147,7 +149,6 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
         );
 
         jcbFiltro.getAccessibleContext().setAccessibleName("");
-        jcbFiltro.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,10 +171,13 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
             if(result == JOptionPane.YES_OPTION){
                 int index = this.jTable.getSelectedRow();
                 String idString = this.jTable.getValueAt(index, 0).toString();
-                idCliente = Long.parseLong(idString);
-                JOptionPane.showMessageDialog(null, facade.ClienteBuscar(idCliente).getNome());
+                long idCliente = Long.parseLong(idString);
+                this.cliente = facade.clienteBuscar(idCliente);
+                //JOptionPane.showMessageDialog(null, facade.ClienteBuscar(idCliente).getNome());
+            }else{
+                this.cliente = null;
+            }
                 dispose();
-            }   
                 //dispose();
         }catch (Exception e){
             JOptionPane.showMessageDialog(null, "Deu Páia!");
@@ -199,7 +203,7 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
             if(this.jcbFiltro.getSelectedIndex() == 1)
                 preencherListaNome();
         } catch (Exception ex) {
-            Logger.getLogger(JdPesquisaCliente.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Cliente não escontrado");
         }
     }//GEN-LAST:event_jbPesquisarActionPerformed
 
@@ -263,14 +267,15 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
         dm.getDataVector().removeAllElements();
         if(!"".equals(this.jtPesquisa.getText())){
             long id = Integer.parseInt(this.jtPesquisa.getText());
-            Cliente c = facade.ClienteBuscar(id);    
+            Cliente c = facade.clienteBuscar(id);    
             //System.out.println(c.getListaExame());
             if(c!=null){
-                for (Cliente cli : facade.ClienteListar()){	
+                for (Cliente cli : facade.clienteListar()){	
                     if(cli.getId() == id){
-                        String cod = Long.toString(c.getId());
-                        dm.addRow(new String[] {cod, c.getNome(),cli.getCpf()});
+                        String cod = Long.toString(cli.getId());
+                        dm.addRow(new String[] {cod, cli.getNome(),cli.getCpf()});
                     }
+                    
                 }
             }else
                     JOptionPane.showMessageDialog(null, "Lista Null");
@@ -280,8 +285,8 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
     private void preencherListaNome() throws Exception{
         DefaultTableModel dm = (DefaultTableModel) jTable.getModel();
         dm.getDataVector().removeAllElements();
-        if(facade.ClienteListar()!= null){
-            for (Cliente c : facade.ClienteListar()){	
+        if(facade.clienteListar()!= null){
+            for (Cliente c : facade.clienteListar()){	
                 String cod = Long.toString(c.getId());
                 dm.addRow(new String[] {cod, c.getNome(),c.getCpf()});
             }
@@ -294,7 +299,7 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
         dm.getDataVector().removeAllElements();
     }
     
-    public long getCliente(){
-        return this.idCliente;
+    public Cliente getCliente(){
+        return this.cliente;
     } 
 }

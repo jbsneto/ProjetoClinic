@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <NonVisualComponents>
-    <Component class="javax.swing.JTextField" name="jtNumero">
-    </Component>
-  </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -28,7 +24,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="1" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <Component id="jpPrincipal" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
           <Component id="jpCadastro" alignment="0" max="32767" attributes="0"/>
@@ -37,7 +33,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" pref="335" max="-2" attributes="0"/>
+              <Component id="jpPrincipal" min="-2" pref="335" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jpCadastro" min="-2" max="-2" attributes="0"/>
           </Group>
@@ -45,7 +41,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="jpPrincipal">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -59,16 +55,16 @@
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jlNome" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jtNome" min="-2" pref="372" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jlCPf" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jtCpf" min="-2" pref="167" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jlDataNas" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jtDataNas" max="32767" attributes="0"/>
                                       </Group>
@@ -79,11 +75,11 @@
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlId" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jtId" min="-2" pref="36" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlDataCadastro" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jtDataCadastro" min="-2" pref="178" max="-2" attributes="0"/>
                           <EmptySpace min="23" max="32767" attributes="0"/>
@@ -97,21 +93,21 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlId" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jtId" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlDataCadastro" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jtDataCadastro" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlNome" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jtNome" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlCPf" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jtCpf" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlDataNas" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jtDataNas" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -122,7 +118,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="jlNome">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nome: "/>
           </Properties>
@@ -135,7 +131,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtNomeActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="jlCPf">
           <Properties>
             <Property name="text" type="java.lang.String" value="CPF: "/>
           </Properties>
@@ -153,7 +149,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="jPanel2">
+            <Container class="javax.swing.JPanel" name="jpEndereco">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                   <JTabbedPaneConstraints tabName="Endere&#xe7;o">
@@ -165,37 +161,46 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jlBairro" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jtBairro" max="32767" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jlCep" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jtCep" min="-2" pref="72" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
                                           <Component id="jlRua" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jtRua" min="-2" pref="246" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="jlNumero" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jtNumero" pref="93" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jlBairro" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jtBairro" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
                                           <Component id="jlCidade" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jtCidade" min="-2" pref="159" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jbBuscaCidade" min="-2" pref="23" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jlCep" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jtCep" min="-2" pref="86" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="0" pref="212" max="32767" attributes="0"/>
+                                  <EmptySpace pref="317" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -207,20 +212,27 @@
                               <Component id="jlRua" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jtRua" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jlNumero" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlBairro" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jtBairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jlCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jtCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jbBuscaCidade" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlCep" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jtCep" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlCidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jtCidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="107" max="32767" attributes="0"/>
+                          <EmptySpace pref="81" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -268,13 +280,19 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtCep">
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTextField()"/>
-                    <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="try{ &#xd;&#xa;javax.swing.text.MaskFormatter cep= new javax.swing.text.MaskFormatter(&quot;##.###-##&quot;); &#xd;&#xa;jtCep = new javax.swing.JFormattedTextField(cep); &#xd;&#xa;} &#xd;&#xa;catch (Exception e){ &#xd;&#xa;} "/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JtextFieldSomenteNumeros(8);"/>
                   </AuxValues>
+                </Component>
+                <Component class="javax.swing.JTextField" name="jtNumero">
+                </Component>
+                <Component class="javax.swing.JButton" name="jbBuscaCidade">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbBuscaCidadeActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanel3">
+            <Container class="javax.swing.JPanel" name="jpContato">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                   <JTabbedPaneConstraints tabName="Contato">
@@ -345,7 +363,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanel4">
+            <Container class="javax.swing.JPanel" name="jpObs">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                   <JTabbedPaneConstraints tabName="Observa&#xe7;&#xf5;es">
@@ -360,7 +378,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlObs" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" alignment="0" min="-2" pref="481" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="65" max="32767" attributes="0"/>
@@ -371,7 +389,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlObs" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="129" max="-2" attributes="0"/>
                           <EmptySpace pref="40" max="32767" attributes="0"/>
@@ -380,7 +398,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel4">
+                <Component class="javax.swing.JLabel" name="jlObs">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Observa&#xe7;&#xf5;es do Cliente:"/>
                   </Properties>
@@ -404,7 +422,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="jlDataNas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Data de Nascimento:"/>
           </Properties>
@@ -414,7 +432,7 @@
             <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="try{ &#xd;&#xa;javax.swing.text.MaskFormatter date = new javax.swing.text.MaskFormatter(&quot;##/##/####&quot;); &#xd;&#xa;jtDataNas = new javax.swing.JFormattedTextField(date); &#xd;&#xa;} &#xd;&#xa;catch (Exception e){ &#xd;&#xa;} "/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
+        <Component class="javax.swing.JLabel" name="jlId">
           <Properties>
             <Property name="text" type="java.lang.String" value="ID:"/>
           </Properties>
@@ -424,7 +442,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtIdActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
+        <Component class="javax.swing.JLabel" name="jlDataCadastro">
           <Properties>
             <Property name="text" type="java.lang.String" value="Data do Cadastro:"/>
           </Properties>

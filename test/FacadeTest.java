@@ -51,10 +51,10 @@ public class FacadeTest {
     @Test
     public void testClienteCadastrar() throws Exception {
         System.out.println("ClienteCadastrar");
-        Cliente c = new Cliente("nome","cpf","dataNas","telefone","email","obs","cidade","bairro","rua","numero","cep");
-        
-        instance.ClienteCadastrar(c);
-        assertNotNull(instance.ClienteListar());
+        Cliente c = new Cliente();
+        c.setNome("NomeTestJUnit");
+        instance.clienteCadastrar(c);
+        assertNotNull(instance.clienteListar());
 
         
     }
@@ -65,7 +65,7 @@ public class FacadeTest {
     @Test
     public void testClienteBuscar() throws Exception {
         System.out.println("ClienteBuscar");   
-        assertNotNull(instance.ClienteBuscar(  idTest  ));
+        assertNotNull(instance.clienteBuscar(  idTest  ));
     }
 
     /**
@@ -75,13 +75,13 @@ public class FacadeTest {
     public void testClienteEditar() throws Exception {
         System.out.println("ClienteEditar");
   
-        Cliente cli = instance.ClienteBuscar(  idTest  );
+        Cliente cli = instance.clienteBuscar(  idTest  );
         
         cli.setNome("TestJUnit");
         
-        instance.ClienteEditar(cli);
+        instance.clienteEditar(cli);
         
-        assertEquals(cli.getNome(), instance.ClienteBuscar(  idTest ).getNome());
+        assertEquals(cli.getNome(), instance.clienteBuscar(  idTest ).getNome());
     }
 
     /**
@@ -91,10 +91,10 @@ public class FacadeTest {
     public void testClienteDeletar() throws Exception {
         System.out.println("ClienteDeletar");
         Cliente c = new Cliente();
-        instance.ClienteCadastrar(c);
-        instance.ClienteDeletar(c);
+        instance.clienteCadastrar(c);
+        instance.clienteDeletar(c);
         System.out.println(c.getId());
-        assertNull(instance.ClienteBuscar(c.getId()));
+        assertNull(instance.clienteBuscar(c.getId()));
     }
     
     /**
@@ -103,7 +103,7 @@ public class FacadeTest {
     @Test
     public void testClienteListar() throws Exception {
         System.out.println("ClienteDeletar");
-        assertNotNull(instance.ClienteListar());
+        assertNotNull(instance.clienteListar());
     }
     
     

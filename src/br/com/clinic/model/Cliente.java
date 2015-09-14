@@ -5,38 +5,23 @@
  */
 package br.com.clinic.model;
 
+import br.com.clinic.interfac.Base;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
 
 /**
  *
  * @author GENPAC
  */
-
+@Entity
 public class Cliente extends Pessoa{
-    
-    private Long id;
-
-    public Cliente(String nome, String cpf, String datNas, String telefone, String email, String obs, String cidade, String bairro, String rua, String numero, String cep) {
-        super(nome, cpf, datNas, telefone, email, obs, cidade, bairro, rua, numero, cep);
-    }
 
     public Cliente() {
         super();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
-    
-    
-    
-    
+    } 
 }

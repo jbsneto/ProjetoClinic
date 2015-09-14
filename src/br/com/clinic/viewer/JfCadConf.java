@@ -13,6 +13,8 @@ public class JfCadConf extends javax.swing.JFrame {
 
 
     private JfCadastroCliente jfCadastroCliente;
+    private JfCadastroFuncionario jfCadastroFuncionario;
+    private JfCadastroExame jfCadastroExame;
 
     private long id;
     
@@ -20,8 +22,11 @@ public class JfCadConf extends javax.swing.JFrame {
     
     public JfCadConf() {
         initComponents();
+        this.setLocationRelativeTo(null);
         
         jfCadastroCliente = new JfCadastroCliente();
+        jfCadastroFuncionario = new JfCadastroFuncionario();
+        jfCadastroExame = new JfCadastroExame();
         jd = new JdPesquisaCliente(this, true);
         
     }
@@ -35,13 +40,12 @@ public class JfCadConf extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jpOpcoes = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jbFuncionario = new javax.swing.JButton();
         jbExame = new javax.swing.JButton();
         jbCliente = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jbFuncionario.setText("Funcionario");
         jbFuncionario.addActionListener(new java.awt.event.ActionListener() {
@@ -64,72 +68,54 @@ public class JfCadConf extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jpOpcoesLayout = new javax.swing.GroupLayout(jpOpcoes);
-        jpOpcoes.setLayout(jpOpcoesLayout);
-        jpOpcoesLayout.setHorizontalGroup(
-            jpOpcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpOpcoesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jpOpcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                    .addComponent(jbExame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jpOpcoesLayout.setVerticalGroup(
-            jpOpcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpOpcoesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jbFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jbExame, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(273, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 482, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jbExame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbFuncionario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                    .addComponent(jbCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 471, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jbFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jbExame, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jpOpcoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpOpcoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFuncionarioActionPerformed
-
-        
+        jfCadastroFuncionario.setVisible(true);
     }//GEN-LAST:event_jbFuncionarioActionPerformed
 
     private void jbClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbClienteActionPerformed
         jfCadastroCliente.setVisible(true);
-    
     }//GEN-LAST:event_jbClienteActionPerformed
 
     private void jbExameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExameActionPerformed
-        
-        
+        jfCadastroExame.setVisible(true);
     }//GEN-LAST:event_jbExameActionPerformed
 
     /**
@@ -172,6 +158,5 @@ public class JfCadConf extends javax.swing.JFrame {
     private javax.swing.JButton jbCliente;
     private javax.swing.JButton jbExame;
     private javax.swing.JButton jbFuncionario;
-    private javax.swing.JPanel jpOpcoes;
     // End of variables declaration//GEN-END:variables
 }
