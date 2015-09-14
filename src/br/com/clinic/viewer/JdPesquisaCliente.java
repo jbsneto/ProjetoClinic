@@ -89,7 +89,8 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
         jLabel1.setText("Filtro:");
 
         jcbFiltro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID", "Todos" }));
-        jcbFiltro.setToolTipText("ID");
+        jcbFiltro.setSelectedIndex(1);
+        jcbFiltro.setToolTipText("");
         jcbFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbFiltroActionPerformed(evt);

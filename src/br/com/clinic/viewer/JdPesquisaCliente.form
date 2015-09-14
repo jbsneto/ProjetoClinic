@@ -152,7 +152,8 @@
                 <StringItem index="1" value="Todos"/>
               </StringArray>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="ID"/>
+            <Property name="selectedIndex" type="int" value="1"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>

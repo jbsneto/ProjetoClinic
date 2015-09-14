@@ -11,12 +11,19 @@ package br.com.clinic.viewer;
  */
 public class JfCadConf extends javax.swing.JFrame {
 
+
+    private JfCadastroCliente jfCadastroCliente;
+
+    private long id;
     
-    JfCadastroCliente TelaCadCliente;
+    private JdPesquisaCliente jd;
     
     public JfCadConf() {
         initComponents();
-        TelaCadCliente = new JfCadastroCliente();
+        
+        jfCadastroCliente = new JfCadastroCliente();
+        jd = new JdPesquisaCliente(this, true);
+        
     }
 
     /**
@@ -34,7 +41,7 @@ public class JfCadConf extends javax.swing.JFrame {
         jbCliente = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         jbFuncionario.setText("Funcionario");
         jbFuncionario.addActionListener(new java.awt.event.ActionListener() {
@@ -44,6 +51,11 @@ public class JfCadConf extends javax.swing.JFrame {
         });
 
         jbExame.setText("Exame");
+        jbExame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbExameActionPerformed(evt);
+            }
+        });
 
         jbCliente.setText("Cliente");
         jbCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +96,7 @@ public class JfCadConf extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 471, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -106,15 +118,19 @@ public class JfCadConf extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFuncionarioActionPerformed
+
         
     }//GEN-LAST:event_jbFuncionarioActionPerformed
 
     private void jbClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbClienteActionPerformed
-        
-        TelaCadCliente.setVisible(true);
-        this.setEnabled(false);
-
+        jfCadastroCliente.setVisible(true);
+    
     }//GEN-LAST:event_jbClienteActionPerformed
+
+    private void jbExameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExameActionPerformed
+        
+        
+    }//GEN-LAST:event_jbExameActionPerformed
 
     /**
      * @param args the command line arguments
