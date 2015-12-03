@@ -29,6 +29,7 @@ public class JdCadastroSetor extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Pesquisa Setor");
         
         facade = new Facade();
         jtId.setEditable(false);

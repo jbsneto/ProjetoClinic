@@ -7,7 +7,6 @@ package br.com.clinic.model;
 
 import br.com.clinic.interfac.Base;
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,10 +19,10 @@ import javax.persistence.ManyToOne;
  * @author GENPAC
  */
 @Entity
-public class Endereco implements Serializable,Base {
+public class Endereco implements Serializable, Base {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String bairro;
     private String rua;
@@ -33,15 +32,6 @@ public class Endereco implements Serializable,Base {
     @ManyToOne
     private CidadeEstado cidadeEstado;
 
-    public CidadeEstado getCidadeEstado() {
-        return cidadeEstado;
-    }
-
-    public void setCidadeEstado(CidadeEstado cidadeEstado) {
-        this.cidadeEstado = cidadeEstado;
-    }
-
-    
     @Override
     public Long getId() {
         return id;
@@ -89,6 +79,14 @@ public class Endereco implements Serializable,Base {
 
     public void setObs(String obs) {
         this.obs = obs;
+    }
+
+    public CidadeEstado getCidadeEstado() {
+        return cidadeEstado;
+    }
+
+    public void setCidadeEstado(CidadeEstado cidadeEstado) {
+        this.cidadeEstado = cidadeEstado;
     }
     
     

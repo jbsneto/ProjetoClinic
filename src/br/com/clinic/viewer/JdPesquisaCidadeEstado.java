@@ -29,6 +29,7 @@ public class JdPesquisaCidadeEstado extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Pesquisa cidade - Tabela IBGE");
 
         facade = new Facade();
         jtPesquisa.setEditable(false);
@@ -40,7 +41,7 @@ public class JdPesquisaCidadeEstado extends javax.swing.JDialog {
             System.out.println("error: " + ex.getMessage());
         }
 
-        this.setTitle("IBGE - Tabela");
+        
     }
 
     /**

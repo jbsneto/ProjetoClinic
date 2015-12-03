@@ -22,7 +22,8 @@ public class JfCadastroFuncionario extends javax.swing.JFrame {
     private Facade facade;
     private JdPesquisaFuncionario jdPesquisaFunc;
     private JdCadastroCargo jdCadastroCargo;
-    private long setId;
+    private JdPesquisaCidadeEstado jdPesquisaCE;
+    private Long setId;
     private Funcionario funcionario;
     private CidadeEstado cidadeEstado;
 
@@ -33,10 +34,12 @@ public class JfCadastroFuncionario extends javax.swing.JFrame {
     public JfCadastroFuncionario() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Cadastro Funcionario");
 
         facade = new Facade();
         jdPesquisaFunc = new JdPesquisaFuncionario(this, true);
         jdCadastroCargo = new JdCadastroCargo(this, true);
+        jdPesquisaCE = new JdPesquisaCidadeEstado(this, true);
 
         jtId.setEditable(false);
         jtDataCadastro.setEditable(false);
@@ -78,6 +81,9 @@ public class JfCadastroFuncionario extends javax.swing.JFrame {
         jlCep = new javax.swing.JLabel();
         jtCep = new JtextFieldSomenteNumeros(8);
         jtNumero = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jtUf = new javax.swing.JTextField();
+        jbBuscaCidade = new javax.swing.JButton();
         jpContato = new javax.swing.JPanel();
         jlTelefone = new javax.swing.JLabel();
         jtTelefone = new javax.swing.JTextField();
@@ -166,6 +172,15 @@ public class JfCadastroFuncionario extends javax.swing.JFrame {
 
         jlCep.setText("CEP:");
 
+        jLabel1.setText("UF:");
+
+        jbBuscaCidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/clinic/img/lupa_128x128.png"))); // NOI18N
+        jbBuscaCidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscaCidadeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpEnderecoLayout = new javax.swing.GroupLayout(jpEndereco);
         jpEndereco.setLayout(jpEnderecoLayout);
         jpEnderecoLayout.setHorizontalGroup(
@@ -193,12 +208,18 @@ public class JfCadastroFuncionario extends javax.swing.JFrame {
                             .addGroup(jpEnderecoLayout.createSequentialGroup()
                                 .addComponent(jlCidade)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtUf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jbBuscaCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jpEnderecoLayout.createSequentialGroup()
                                 .addComponent(jlCep)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jtCep, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(263, Short.MAX_VALUE))))
         );
         jpEnderecoLayout.setVerticalGroup(
             jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,14 +235,18 @@ public class JfCadastroFuncionario extends javax.swing.JFrame {
                     .addComponent(jlBairro)
                     .addComponent(jtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlCidade)
-                    .addComponent(jtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jlCidade)
+                        .addComponent(jtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
+                        .addComponent(jtUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbBuscaCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCep)
                     .addComponent(jtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         jtContato.addTab("Endereço", jpEndereco);
@@ -315,6 +340,12 @@ public class JfCadastroFuncionario extends javax.swing.JFrame {
         jlLogin.setText("Account:");
 
         jlSenha.setText("Password:");
+
+        jtLogin.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtLoginFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpEndereco1Layout = new javax.swing.GroupLayout(jpEndereco1);
         jpEndereco1.setLayout(jpEndereco1Layout);
@@ -638,6 +669,33 @@ public class JfCadastroFuncionario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jmAdicionaisActionPerformed
 
+    private void jbBuscaCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscaCidadeActionPerformed
+        jdPesquisaCE.setVisible(true);
+        jdPesquisaCE.limparTabela();
+        CidadeEstado aux = jdPesquisaCE.getCidadeEstado();
+        if(aux != null){
+            cidadeEstado = aux;
+            jtCidade.setText(cidadeEstado.getNomeCidade());
+            jtUf.setText(cidadeEstado.getNomeEstado());
+        }
+    }//GEN-LAST:event_jbBuscaCidadeActionPerformed
+
+    private void jtLoginFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtLoginFocusLost
+        boolean aux = true;
+        try {
+            for(Funcionario u: facade.funcionarioListar())
+                if(u.getLogin().equals(jtLogin.getText()))
+                    aux = false;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("Error:" + ex.getMessage());
+        }
+        if(!aux){
+            JOptionPane.showMessageDialog(null, "Login existente!");
+            jtLogin.setText(null);
+        }
+    }//GEN-LAST:event_jtLoginFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -681,9 +739,11 @@ public class JfCadastroFuncionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbAceitar;
+    private javax.swing.JButton jbBuscaCidade;
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbCadastrar;
     private javax.swing.JButton jbDeletar;
@@ -731,6 +791,7 @@ public class JfCadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextArea jtObs;
     private javax.swing.JTextField jtRua;
     private javax.swing.JTextField jtTelefone;
+    private javax.swing.JTextField jtUf;
     // End of variables declaration//GEN-END:variables
 
     void preencherComboBox() {
@@ -932,6 +993,7 @@ public class JfCadastroFuncionario extends javax.swing.JFrame {
         jtRua.setText(null);
         jtBairro.setText(null);
         jtCidade.setText(null);
+        jtUf.setText(null);
         jtNumero.setText(null);
         jtCep.setText(null);
         jtTelefone.setText(null);

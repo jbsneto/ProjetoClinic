@@ -53,7 +53,6 @@ public class Pessoa implements Base, Serializable {
     private Date dataCadastro;
     
     @OneToOne(cascade = CascadeType.ALL)
-    //@JoinColumn(name="endereco_id")  
     private Endereco endereco;
     
     public Pessoa(){

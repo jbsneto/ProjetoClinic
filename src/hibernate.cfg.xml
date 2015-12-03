@@ -8,7 +8,9 @@
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">admin</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
+    <mapping class="br.com.clinic.model.CidadeEstado"/>
     <mapping class="br.com.clinic.model.Pessoa"/>
+    <mapping class="br.com.clinic.model.LogExame"/>
     <mapping class="br.com.clinic.model.Endereco"/>
     <mapping class="br.com.clinic.model.Funcionario"/>
     <mapping class="br.com.clinic.model.Cliente"/>

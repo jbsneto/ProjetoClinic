@@ -27,6 +27,7 @@ import javax.persistence.TemporalType;
 @Entity
 public class ExameCliente implements Base, Serializable {
     
+    private static final String op[] = {"PENDENTE", "COLETADO", "EXAMINADO", "ENTREGUE", "EXTRAVIADO"};
     //Exame da requisição do cliente
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,14 +36,22 @@ public class ExameCliente implements Base, Serializable {
     private Date dataExame;
     @ManyToOne
     private Exame exame;
+    private String status;
     private boolean urgencia;
     //@ManyToOne(cascade=CascadeType.ALL)
     //private Lancamento lancamento; //Terá acesso ao cliente, medSolicitante
+    
+    public void setStatusColetado(){ status = op[1]; }
+    public void setStatusExaminado(){ status = op[2]; }
+    public void setStatusEntregue(){ status = op[3]; }
+    public void setStatusExtraviado(){ status = op[4]; }
+    public String getStatus(){ return status; }
 
     public ExameCliente() {
         dataExame = Util.getDataAtual();
+        status = op[0];
     }
-
+    
     @Override
     public Long getId() {
         return id;

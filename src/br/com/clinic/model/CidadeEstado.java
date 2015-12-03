@@ -17,15 +17,16 @@ import javax.persistence.Id;
  * @author GENPAC
  */
 @Entity
-public class CidadeEstado implements Serializable,Base{
+public class CidadeEstado implements Serializable, Base {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String nomeCidade;
     private String nomeEstado;
     private String codCidade;
     private String codEstado;
+
 
     @Override
     public Long getId() {
@@ -36,8 +37,8 @@ public class CidadeEstado implements Serializable,Base{
     public String toString() {
         return nomeCidade;
     }
-    
-    public void setId(long id) {
+
+    public void setId(Long id) {
         this.id = id;
     }
 

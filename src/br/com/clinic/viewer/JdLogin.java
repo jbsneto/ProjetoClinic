@@ -5,7 +5,10 @@
  */
 package br.com.clinic.viewer;
 
+import br.com.clinic.facade.Facade;
 import br.com.clinic.model.Funcionario;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,13 +18,16 @@ import javax.swing.JOptionPane;
 public class JdLogin extends javax.swing.JDialog {
 
     //private JdPesquisaFuncionario jdPesquisaFuncionario;
+    private Facade facade;
     private Funcionario usuario;
     
     public JdLogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Login");
         
+        facade = new Facade();
        // jdPesquisaFuncionario = new JdPesquisaFuncionario(null, true);
         
     }
@@ -120,9 +126,17 @@ public class JdLogin extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInserirActionPerformed
-       if(validaFuncionario() == false)
-           usuario = null; 
-       dispose();
+        if(usuario != null){
+            if(validaFuncionario() == false)
+               usuario = null; 
+            dispose();
+        }else{
+            getFuncLogin();
+            if(validaFuncionario() == false)
+               usuario = null; 
+            System.out.println(usuario);
+            dispose();
+        }
     }//GEN-LAST:event_jbInserirActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
@@ -184,11 +198,10 @@ public class JdLogin extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     public boolean validaFuncionario(){
-        if(jtLogin.getText().equals(usuario.getLogin()) && jtSenha.getText().equals(usuario.getSenha())){    
-            return true;
-        }else{
+        if(usuario != null)
+            return jtLogin.getText().equals(usuario.getLogin()) && jtSenha.getText().equals(usuario.getSenha());
+        else
             return false;
-        }
     }
     
     public void limpaForm(){
@@ -196,6 +209,17 @@ public class JdLogin extends javax.swing.JDialog {
         jtSenha.setText(null);
         usuario = null;
     }
+    
+    public void getFuncLogin (){
+        try {
+            if(facade.funcionarioBuscarLogin(jtLogin.getText())!=null)
+                usuario = facade.funcionarioBuscarLogin(jtLogin.getText()); 
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("erro: " + ex.getMessage());
+        } 
+    }
+    
     
     public Funcionario getFuncionario (){
         //System.out.println(usuario.getNome());

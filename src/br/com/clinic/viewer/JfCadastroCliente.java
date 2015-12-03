@@ -31,6 +31,7 @@ public class JfCadastroCliente extends javax.swing.JFrame {
     public JfCadastroCliente() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Cadastro Cliente");
 
         facade = new Facade();
         jdPesquisaCliente = new JdPesquisaCliente(this, true);
@@ -77,6 +78,8 @@ public class JfCadastroCliente extends javax.swing.JFrame {
         jtCep = new JtextFieldSomenteNumeros(8);
         jtNumero = new javax.swing.JTextField();
         jbBuscaCidade = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jtUf = new javax.swing.JTextField();
         jpContato = new javax.swing.JPanel();
         jlTelefone = new javax.swing.JLabel();
         jtTelefone = new javax.swing.JTextField();
@@ -154,11 +157,14 @@ public class JfCadastroCliente extends javax.swing.JFrame {
 
         jlCep.setText("CEP:");
 
+        jbBuscaCidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/clinic/img/lupa_128x128.png"))); // NOI18N
         jbBuscaCidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbBuscaCidadeActionPerformed(evt);
             }
         });
+
+        jLabel1.setText("UF:");
 
         javax.swing.GroupLayout jpEnderecoLayout = new javax.swing.GroupLayout(jpEndereco);
         jpEndereco.setLayout(jpEnderecoLayout);
@@ -185,16 +191,20 @@ public class JfCadastroCliente extends javax.swing.JFrame {
                     .addGroup(jpEnderecoLayout.createSequentialGroup()
                         .addGroup(jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpEnderecoLayout.createSequentialGroup()
+                                .addComponent(jlCep)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtCep, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpEnderecoLayout.createSequentialGroup()
                                 .addComponent(jlCidade)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jbBuscaCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpEnderecoLayout.createSequentialGroup()
-                                .addComponent(jlCep)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtCep, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(317, Short.MAX_VALUE))))
+                                .addComponent(jtUf, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jbBuscaCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jpEnderecoLayout.setVerticalGroup(
             jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,7 +223,9 @@ public class JfCadastroCliente extends javax.swing.JFrame {
                 .addGroup(jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jlCidade)
-                        .addComponent(jtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
+                        .addComponent(jtUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jbBuscaCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -567,6 +579,7 @@ public class JfCadastroCliente extends javax.swing.JFrame {
         if(aux != null){
             cidadeEstado = aux;
             jtCidade.setText(cidadeEstado.getNomeCidade());
+            jtUf.setText(cidadeEstado.getNomeEstado());
         }
     }//GEN-LAST:event_jbBuscaCidadeActionPerformed
 
@@ -607,6 +620,7 @@ public class JfCadastroCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbAceitar;
     private javax.swing.JButton jbBuscaCidade;
@@ -647,6 +661,7 @@ public class JfCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JTextArea jtObs;
     private javax.swing.JTextField jtRua;
     private javax.swing.JTextField jtTelefone;
+    private javax.swing.JTextField jtUf;
     // End of variables declaration//GEN-END:variables
 
     public void cadastrarCliente() {
@@ -766,6 +781,7 @@ public class JfCadastroCliente extends javax.swing.JFrame {
         jtRua.setText(null);
         jtBairro.setText(null);
         jtCidade.setText(null);
+        jtUf.setText(null);
         jtNumero.setText(null);
         jtCep.setText(null);
         jtTelefone.setText(null);

@@ -26,6 +26,7 @@ public class JdPesquisaCliente extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Pesquisa Cliente");
         
         facade = new Facade();
         jtPesquisa.setEditable(false);

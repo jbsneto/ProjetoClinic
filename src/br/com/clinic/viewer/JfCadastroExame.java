@@ -30,6 +30,7 @@ public class JfCadastroExame extends javax.swing.JFrame {
     public JfCadastroExame() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Cadastro Exame");
 
         facade = new Facade();
         jdPesquisaExame = new JdPesquisaExame(this, true);

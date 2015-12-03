@@ -26,6 +26,7 @@ public class JdPesquisaFuncionario extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Pesquisa Funcionario");
         
         facade = new Facade();
         jtPesquisa.setEditable(false);

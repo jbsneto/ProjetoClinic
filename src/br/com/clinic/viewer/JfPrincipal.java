@@ -5,6 +5,9 @@
  */
 package br.com.clinic.viewer;
 
+
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author GENPAC
@@ -14,13 +17,20 @@ public class JfPrincipal extends javax.swing.JFrame {
     
     private JfCadConf jfCadConf;
     private JfCadastroLancamento jfCadastroLancamento;
+    private JfColeta jfColeta;
+    private JfExame jfExame;
+    private JdLogin jdLogin;
     
     public JfPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Tela Principal");
         
         jfCadConf = new JfCadConf();
         jfCadastroLancamento = new JfCadastroLancamento();
+        jfColeta = new JfColeta();
+        jfExame = new JfExame();
+        jdLogin = new JdLogin(this,true);
     }
 
     /**
@@ -33,22 +43,46 @@ public class JfPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jbLancamento = new javax.swing.JButton();
+        jbCadConf = new javax.swing.JButton();
+        jbColeta = new javax.swing.JButton();
+        jbExamina = new javax.swing.JButton();
+        jbEntrega = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("CAD E CONF");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbLancamento.setText("LANÇAMENTO");
+        jbLancamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbLancamentoActionPerformed(evt);
             }
         });
 
-        jButton2.setText("LANÇAMENTO");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jbCadConf.setText("CAD E CONF");
+        jbCadConf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jbCadConfActionPerformed(evt);
+            }
+        });
+
+        jbColeta.setText("COLETA");
+        jbColeta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbColetaActionPerformed(evt);
+            }
+        });
+
+        jbExamina.setText("EXAME");
+        jbExamina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbExaminaActionPerformed(evt);
+            }
+        });
+
+        jbEntrega.setText("ENTREGA");
+        jbEntrega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEntregaActionPerformed(evt);
             }
         });
 
@@ -59,18 +93,27 @@ public class JfPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
+                    .addComponent(jbColeta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbLancamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(jbCadConf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbExamina, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbEntrega, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbLancamento, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbColeta, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addComponent(jbExamina, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(jbCadConf, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -81,19 +124,47 @@ public class JfPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jbCadConfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadConfActionPerformed
         jfCadConf.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbCadConfActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jbLancamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLancamentoActionPerformed
         jfCadastroLancamento.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jbLancamentoActionPerformed
+
+    private void jbColetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbColetaActionPerformed
+        jdLogin.limpaForm();
+        jdLogin.setVisible(true);
+        if(jdLogin.getFuncionario()!=null){
+            jfColeta.setFuncionario(jdLogin.getFuncionario());
+            jfColeta.setVisible(true);
+        }else{
+           JOptionPane.showMessageDialog(null,"Usuario inexistente ou não encontrado!");     
+        }    
+    }//GEN-LAST:event_jbColetaActionPerformed
+
+    private void jbExaminaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExaminaActionPerformed
+        jdLogin.limpaForm();
+        jdLogin.setVisible(true);
+        if(jdLogin.getFuncionario()!=null){
+            jfExame.setFuncionario(jdLogin.getFuncionario());
+            jfExame.setVisible(true);
+        }else{
+           JOptionPane.showMessageDialog(null,"Usuario inexistente ou não encontrado!");     
+        } 
+    }//GEN-LAST:event_jbExaminaActionPerformed
+
+    private void jbEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEntregaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbEntregaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,8 +202,11 @@ public class JfPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jbCadConf;
+    private javax.swing.JButton jbColeta;
+    private javax.swing.JButton jbEntrega;
+    private javax.swing.JButton jbExamina;
+    private javax.swing.JButton jbLancamento;
     // End of variables declaration//GEN-END:variables
 }

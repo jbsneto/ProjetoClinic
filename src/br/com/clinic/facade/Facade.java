@@ -12,6 +12,7 @@ import br.com.clinic.dao.FuncionarioDao;
 import br.com.clinic.dao.ClienteDao;
 import br.com.clinic.dao.ExameClienteDao;
 import br.com.clinic.dao.LancamentoDao;
+import br.com.clinic.dao.LogExameDao;
 import br.com.clinic.dao.SetorDao;
 
 import br.com.clinic.model.Cargo;
@@ -21,6 +22,7 @@ import br.com.clinic.model.Exame;
 import br.com.clinic.model.ExameCliente;
 import br.com.clinic.model.Funcionario;
 import br.com.clinic.model.Lancamento;
+import br.com.clinic.model.LogExame;
 import br.com.clinic.model.Setor;
 import java.util.List;
 
@@ -36,6 +38,7 @@ public class Facade {
     private LancamentoDao daoLancamento;
     private ExameClienteDao daoExameCliente;
     private CidadeEstadoDao daoCidadeEstado;
+    private LogExameDao daoLogExame;
     
     public Facade() {
         daoCargo = new CargoDao(Cargo.class);
@@ -46,20 +49,26 @@ public class Facade {
         daoLancamento = new LancamentoDao(Lancamento.class);
         daoExameCliente = new ExameClienteDao(ExameCliente.class);
         daoCidadeEstado = new CidadeEstadoDao(CidadeEstado.class);
+        daoLogExame = new LogExameDao(LogExame.class);
+    }
+    
+    public void cadastraLog(LogExame e) throws Exception {
+         daoLogExame.create(e);
+    }
+    
+    public List<LogExame> listarLog() throws Exception {
+         return daoLogExame.getAll();
     }
     
     public void cidadeEstadoCadastrar(CidadeEstado c) throws Exception {
-         //daoClienteJDBC.cadastrarCliente(c);
          daoCidadeEstado.create(c);
     }
     
     public List<CidadeEstado> cidadeEstadoListar()throws Exception {
-        //return daoClienteJDBC.listarCliente();
         return daoCidadeEstado.getAll();
     }
     
     public CidadeEstado getCidadeEstado(String nome)throws Exception {
-        //return daoClienteJDBC.listarCliente();
         return daoCidadeEstado.getCodCidade(nome);
     }
     
@@ -98,6 +107,11 @@ public class Facade {
     public Funcionario funcionarioBuscar(long id) throws Exception {
         //return daoClienteJDBC.buscarCliente(id);
         return daoFuncionario.getIdFuncionario(id);
+    }
+    
+    public Funcionario funcionarioBuscarLogin(String login) throws Exception {
+        //return daoClienteJDBC.buscarCliente(id);
+        return daoFuncionario.getLoginFuncionario(login);
     }
 
     public void funcionarioEditar (Funcionario f) throws Exception {
@@ -212,23 +226,27 @@ public class Facade {
     }
 
     //EXAMECLIENTE
-    public void exameClienteCadastrar(ExameCliente E) throws Exception {
+    public void exameClienteCadastrar(ExameCliente e) throws Exception {
         //daoCargoJDBC.cadastrarCargo(c);
-         daoExameCliente.create(E);
+         daoExameCliente.create(e);
     }
 
     public ExameCliente exameClienteBuscar(long id) throws Exception {
         //return daoCargoJDBC.buscarCargo(id);
         return daoExameCliente.getId(id);
-
     }
     
-    public void ExameClienteDeletar(ExameCliente e) throws Exception {
+    public void exameClienteEditar(ExameCliente e) throws Exception {
+        //return daoCargoJDBC.buscarCargo(id);
+        daoExameCliente.update(e);
+    }
+    
+    public void exameClienteDeletar(ExameCliente e) throws Exception {
         //daoCargoJDBC.deletarCargo(c);
         daoExameCliente.delete(e);
     }
     
-    public List<ExameCliente> ExameClienteListar()throws Exception {
+    public List<ExameCliente> exameClienteListar()throws Exception {
         //return daoCargoJDBC.listarCargo();
         return daoExameCliente.getAll();
     }

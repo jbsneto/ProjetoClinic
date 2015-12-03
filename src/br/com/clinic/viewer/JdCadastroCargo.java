@@ -32,6 +32,7 @@ public class JdCadastroCargo extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Pesquisa Cargo");
 
         facade = new Facade();
         jtId.setEditable(false);

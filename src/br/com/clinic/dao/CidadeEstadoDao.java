@@ -6,13 +6,8 @@
 package br.com.clinic.dao;
 
 import br.com.clinic.model.CidadeEstado;
-import br.com.clinic.model.Cliente;
-import br.com.clinic.model.Pessoa;
 import br.com.clinic.util.GenericDAO;
 import br.com.clinic.util.HibernateUtil;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;

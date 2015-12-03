@@ -33,4 +33,13 @@ public class FuncionarioDao extends GenericDAO<Funcionario>{
 		return p;
     }
     
+    public Funcionario getLoginFuncionario(String login) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Criteria criteria = session.createCriteria(Pessoa.class);
+		criteria.add(Restrictions.eq("login", login));
+		Funcionario p = (Funcionario) criteria.uniqueResult();
+		session.close();
+		return p;
+    }
+    
 }
